@@ -1,4 +1,7 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     require_once("includes/config.php");
     require_once("classes/crud.php");
     require_once("includes/functions.php");
@@ -20,7 +23,8 @@
 
         $category=$crud->escapeString($_POST['category']);
         $title=$crud->escapeString($_POST['title']);
-        $slug=slug($title);
+        //$slug=slug($title);
+        $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($title)));
         $description=$crud->escapeString($_POST['description']);
         $content=$crud->escapeString($_POST['content']);
         $author=$crud->escapeString($_POST['author']);
@@ -62,7 +66,23 @@
         }
         if($valid == 1)
         {
+            $query="SELECT slug FROM posts WHERE slug LIKE '$slug%'";
 
+            $total_row=$crud->numRows($query);
+
+            if($total_row > 0){
+
+                $result= $crud-> read($query);
+                foreach ($result as $row) {
+                   $data[]=$row['slug'];
+                }
+                if(in_array($slug,$data))
+                {
+                    $count = 0;
+                    while(in_array(($slug . '-' . ++$count), $data));
+                    $slug = $slug . '-' . $count;
+                }
+            }
             move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
             $date = date('Y-m-d h:i:s');
             $sql="insert into `posts`(`category`,`title`,`slug`,`description`,`content`,`author`,`tags`,`date`,`image`)values('$category','$title','$slug','$description','$content','$author','$tags','$date','$filename')";
@@ -147,8 +167,9 @@
                                                     <?php
                                                         foreach($rows as $key=>$row)
                                                         {
+                                                            $category=isset($_POST['category'])?$_POST['category']:'';
                                                     ?>
-                                                            <option value="<?php echo $row['id'];?>" <?php echo ($row['id']==$_POST['category'])?'selected':''; ?>><?php echo $row['title']; ?></option>
+                                                            <option value="<?php echo $row['id'];?>" <?php echo ($row['id']==$category)?'selected':''; ?>><?php echo $row['title']; ?></option>
                                                     <?php
                                                         }
                                                     ?>

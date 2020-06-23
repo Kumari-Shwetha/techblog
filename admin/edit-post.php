@@ -7,8 +7,7 @@
     {
         header("location:login.php");
     }
-    //if(isset($_POST['category']))
-  
+   
     if(isset($_POST['editPost']))
     {
         $valid=1;

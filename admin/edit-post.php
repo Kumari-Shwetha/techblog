@@ -16,7 +16,7 @@
 
         $category=$crud->escapeString($_POST['category']);
         $title=$crud->escapeString($_POST['title']);
-        $slug=slug($title);
+        $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($title)));
         $description=$crud->escapeString($_POST['description']);
         $content=$crud->escapeString($_POST['content']);
         $author=$crud->escapeString($_POST['author']);
@@ -53,7 +53,31 @@
 
             if($valid == 1)
             {
-                 $date = date('Y-m-d h:i:s');
+                $date = date('Y-m-d h:i:s');
+
+                echo $query="SELECT id,slug FROM posts WHERE slug='$slug'";
+                $result=$crud->read($query);
+                print_r($result);
+
+                if($result['id'] != $id){
+                    $query="SELECT id,slug FROM posts WHERE slug LIKE '$slug%'";
+                    $total_row=$crud->numRows($query);
+
+                    if($total_row > 0){
+
+                        $result= $crud-> read($query);
+                        foreach ($result as $row) {
+                           $data[]=$row['slug'];
+                        }
+                        if(in_array($slug,$data))
+                        {
+                            $count = 0;
+                            while(in_array(($slug . '-' . ++$count), $data));
+                            $slug = $slug . '-' . $count;
+                        }
+                    }
+                }
+                
            
                 if(!empty($filename))
                 {

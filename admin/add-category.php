@@ -16,23 +16,32 @@
        
         if($valid == 1)
         {
-            $sql="insert into `category`(`title`,`cat_slug`)values('$category','$cat_slug')";
-        
+            $select_sql="SELECT * FROM category WHERE title='$category'";
+            $count_rows=$crud->numRows($select_sql);
+            if($count_rows > 0){
 
-            $result=$crud->execute($sql);
-        
-            if($result == false)
-            {
-            
                 $output='danger';
-                $errorMessages[]='Some problems occured,try again!';
-                $valid=0;
+                $errorMessages[]='Category Alredy Exist!';
             }
             else
             {
-                $output='success';
-                $errorMessages[]='Category has been added succesfully..!!!';
+                $sql="insert into `category`(`title`,`cat_slug`)values('$category','$cat_slug')";
+        
 
+                $result=$crud->execute($sql);
+            
+                if($result == false)
+                {
+                
+                    $output='danger';
+                    $errorMessages[]='Some problems occured,try again!';
+                }
+                else
+                {
+                    $output='success';
+                    $errorMessages[]='Category has been added succesfully..!!!';
+
+                }
             }
         }
         else

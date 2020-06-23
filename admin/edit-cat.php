@@ -22,20 +22,49 @@
         {
             if($valid == 1)
             {
-                $sql="update `category` set `title`='$category',`cat_slug`='$cat_slug' where `id`='$id'";
-                $result=$crud->execute($sql);
-        
-                if($result == false)
-                {
-                    $output='danger';
-                    $errorMessages[]='Some problems occured,try again!';
-                    $valid = 0;
-                }
-                else
-                {
-                    $output='success';
-                    $errorMessages[]='Category has been updated succesfully..!!!';
+                $query="SELECT  id FROM category WHERE title='$category'";
+                $res=$crud->read($query,true);
 
+                if($crud->numRows($query) > 0)
+                {
+                        if($res['id'] != $id){
+                            $output='danger';
+                            $errorMessages[]='Category Already Exists!';
+                        }
+                        else{
+                            $sql="update `category` set `title`='$category',`cat_slug`='$cat_slug' where `id`='$id'";
+                            $result=$crud->execute($sql);
+            
+                           if($result == false)
+                            {
+                                $output='danger';
+                                $errorMessages[]='Some problems occured,try again!';
+                            }
+                            else
+                            {
+                                $output='success';
+                                $errorMessages[]='Category has been updated succesfully..!!!';
+
+                            }
+
+                        }
+                }
+                else{
+
+                        $sql="update `category` set `title`='$category',`cat_slug`='$cat_slug' where `id`='$id'";
+                        $result=$crud->execute($sql);
+        
+                       if($result == false)
+                        {
+                            $output='danger';
+                            $errorMessages[]='Some problems occured,try again!';
+                        }
+                        else
+                        {
+                            $output='success';
+                            $errorMessages[]='Category has been updated succesfully..!!!';
+
+                        }
                 }
             }
             else
@@ -48,7 +77,6 @@
         {
             $output='danger';
             $errorMessages[]='Invalid Category ID!';
-            $valid = 0;
         }
       
     }

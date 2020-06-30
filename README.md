@@ -1,4 +1,4 @@
-# techblog
+# Techblog
 Techblog it is blog website with admin panel.
 
 

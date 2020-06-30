@@ -10,3 +10,8 @@ Techblog it is blog website with admin panel.
 ## Website features
 - It is responsive website
 - It has seo friendly urls
+
+[View Project](https://kumarishwetha.com/techblog/)
+
+
+### Skills used: JavaScript,HTML,CSS,PHP,MySQL

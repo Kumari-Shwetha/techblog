@@ -1,5 +1,5 @@
-# Techblog
-Techblog it is blog website with admin panel.
+# Web Trends
+Web Trends it is blog website with admin panel.
 
 
 - User can search the post
@@ -11,7 +11,7 @@ Techblog it is blog website with admin panel.
 - It is responsive website
 - It has seo friendly urls
 
-[View Project](https://kumarishwetha.com/techblog/)
+[View Project](http://kumarishwetha.com/web-trends/)
 
 
-### Skills used: JavaScript,HTML,CSS,PHP,MySQL
+### Skills used: JavaScript,HTML,CSS & Bootstrap,PHP,MySQL

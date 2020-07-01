@@ -12,7 +12,7 @@
     					foreach ($rows_cat as $row_cat) {
 
         				?>
-                        <li class="list-group-item"><a href="/techblog/category/<?php echo $row_cat['cat_slug']; ?>"><?php echo $row_cat['title']; ?></a><span>(<?php echo $row_cat['count_cat']; ?>)</span></span></li>
+                        <li class="list-group-item"><a href="/web-trends/category/<?php echo $row_cat['cat_slug']; ?>"><?php echo $row_cat['title']; ?></a><span>(<?php echo $row_cat['count_cat']; ?>)</span></span></li>
                     <?php } ?>
                     </ul>
                 </div>
@@ -36,13 +36,13 @@
                     <div class="recent-post">
                         <div class="media">
                             <div class="latest-post-img">
-                                <a href="/techblog/post/<?php echo $row['slug']; ?>">
-                                    <img src="/techblog/admin/assets/img/uploads/<?php echo $row['image']; ?>" alt="">
+                                <a href="/web-trends/post/<?php echo $row['slug']; ?>">
+                                    <img src="/web-trends/admin/assets/img/uploads/<?php echo $row['image']; ?>" alt="">
                                 </a>
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <a href="/techblog/post/<?php echo $row['slug']; ?>"><?php echo $row['title']; ?></a>
+                                    <a href="/web-trends/post/<?php echo $row['slug']; ?>"><?php echo $row['title']; ?></a>
                                 </h4>
                                 <ul class="recent-post-icon">
                                     <li>

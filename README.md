@@ -1,6 +1,5 @@
 # Web Trends
-Web Trends it is blog website with admin panel.
-
+Web trends it is a blog Application users can read the blog,search and all the blog have specific catagory mantained by admin.
 
 - User can search the post
 - User can select the post according to category

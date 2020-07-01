@@ -22,9 +22,9 @@
                             $date = date("d-M-Y", $sec); 
                     ?>
                     <div class="blog-listing-item">
-                        <h2><a href="/techblog/post/<?php echo $row['slug']; ?>"><?php echo $row['title']; ?></a></h2>
+                        <h2><a href="/web-trends/post/<?php echo $row['slug']; ?>"><?php echo $row['title']; ?></a></h2>
                         <div class="blog-listing-item-img">
-                            <a href="/techblog/post/<?php echo $row['slug']; ?>"><img src="/techblog/admin/assets/img/uploads/<?php echo $row['image']; ?>" alt="blog post image"> alt=""></a>
+                            <a href="/web-trends/post/<?php echo $row['slug']; ?>"><img src="/web-trends/admin/assets/img/uploads/<?php echo $row['image']; ?>" alt="blog post image"> alt=""></a>
                         </div>
                         <div class="blog-listing-info">
                             <ul class="flex-row">

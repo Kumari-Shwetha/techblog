@@ -6,10 +6,10 @@ require_once("function.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techblog</title>
+    <title>web trends</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
-    <link rel="stylesheet" href="/techblog/css/style.css">
+    <link rel="stylesheet" href="/web-trends/css/style.css">
     <script type="text/javascript">
     	function prettySubmit(form, evt) {
 			evt.preventDefault();
